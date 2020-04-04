@@ -10,7 +10,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :home
+    if(session != nil && session[:id] != nil)
+      erb :"users/home"
+    else
+      erb :home
+    end
+
   end
 
   get '/registrations/signup' do
