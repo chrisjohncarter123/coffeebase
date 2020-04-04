@@ -21,7 +21,8 @@ ActiveRecord::Schema.define(version: 20200401223422) do
 
   create_table "Posts", force: :cascade do |t|
     t.integer "user_id"
-    t.string  "content"
+    t.string  "description"
+    t.string  "review"
   end
 
   create_table "Users", force: :cascade do |t|

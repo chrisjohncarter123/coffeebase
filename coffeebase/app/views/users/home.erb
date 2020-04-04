@@ -22,7 +22,16 @@
 
 <% @posts.each do |post| %>
 
-  <%= post.content %>
+  <p>Description:</p>
+  <%= post.description %>
+  <p>Review:</p>
+  <%= post.review %>
+
+  <br />
+
+  <a href= <%="/posts/#{post.id}/edit"%>>Edit</a>
+
+
 
 <%end %>
 

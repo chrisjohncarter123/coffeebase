@@ -59,12 +59,7 @@ class ApplicationController < Sinatra::Base
     erb :'/users/home'
   end
 
-  get '/users/your_content' do
-    @user = User.find(session[:user_id])
-    @posts = Post.all
-    @comments = Comment.all
-    erb :'users/your_content'
-  end
+
 
 
 end

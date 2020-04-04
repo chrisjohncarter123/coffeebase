@@ -14,26 +14,27 @@ class PostsController < Sinatra::Base
   end
 
   get '/posts/:id' do
-    post = Post.find(params[:id])
-    erb :show
+    @post = Post.find(params[:id])
+    erb :"posts/show"
   end
 
-  patch '/posts/:id' do
-    article = Post.find(params[:id])
-    article.title = params[:title]
-    article.content = params[:content]
-    article.save
+  post '/posts/:id' do
+    post = Post.find(params[:id])
+    post.description = params[:title]
+    post.review = params[:content]
+    post.save
 
     redirect "/posts/#{params[:id]}"
   end
 
 
   post '/posts' do
-    "hello"
-    user_id = session[:user_id]
-    user_content = params[:content]
 
-    Posts.create(:user_id => user_id, :content => user_content)
+    user_id = session[:user_id]
+    description = params[:description]
+    review = params[:review]
+
+    Post.create(:user_id => user_id, :description => description, :review => review)
 
     redirect "/users/home"
 
@@ -41,16 +42,16 @@ class PostsController < Sinatra::Base
   end
 
   get '/posts/:id/edit' do
-    @article = Article.find(params[:id])
-    erb :edit
+    @post = Post.find(params[:id])
+    erb :"posts/edit"
   end
 
 
 
 
   delete '/posts/:id' do
-    @article = Article.find(params[:id])
-    @article.destroy
+    @post = Post.find(params[:id])
+    @post.destroy
 
     redirect "/posts"
   end
