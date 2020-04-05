@@ -47,8 +47,6 @@ class PostsController < Sinatra::Base
   end
 
 
-
-
   delete '/posts/:id' do
     @post = Post.find(params[:id])
     @post.destroy

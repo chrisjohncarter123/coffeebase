@@ -57,8 +57,12 @@ class ApplicationController < Sinatra::Base
     @user = User.find(session[:user_id])
     @all_posts = Post.all
 
-    @posts = Post.all
-    @comments = Comment.all
+    @posts = []
+    @all_posts.each do |post|
+      if(post.user_id == @user.id)
+        @posts << post
+      end
+    end
 
 
     erb :'/users/home'
