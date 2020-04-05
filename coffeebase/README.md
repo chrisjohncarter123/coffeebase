@@ -16,7 +16,6 @@ shotgun
 Run this command to install everything you need:
 
 
-
 ```
 bundle install
 ```

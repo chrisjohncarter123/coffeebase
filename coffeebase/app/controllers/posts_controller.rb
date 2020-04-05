@@ -18,10 +18,10 @@ class PostsController < Sinatra::Base
     erb :"posts/show"
   end
 
-  post '/posts/:id' do
+  patch '/posts/:id' do
     post = Post.find(params[:id])
-    post.description = params[:title]
-    post.review = params[:content]
+    post.description = params[:description]
+    post.review = params[:review]
     post.save
 
     redirect "/posts/#{params[:id]}"
@@ -53,7 +53,7 @@ class PostsController < Sinatra::Base
     @post = Post.find(params[:id])
     @post.destroy
 
-    redirect "/posts"
+    redirect "/users/home"
   end
 
 end
