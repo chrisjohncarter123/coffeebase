@@ -8,18 +8,20 @@
 <nav>
   <% if logged_in? %>
 
+    <a href="/statuses"> View All Statuses </a>
     <a href="/statuses/new"> Create Status </a>
     <a href="/logout"> Log Out </a>
     <p>Welcome, <%=current_user.username %></p>
 
   <% else %>
+    <a href="/">Home</a>
     <a href="/signup">Sign Up</a>
     <a href="/login"> Sign In </a>
   <%end %>
 
 </nav>
 <div class="container">
-  <h1>Status Comment</h1>
+  <h1>Coffee Master King</h1>
   <% if !@error_message.nil? %>
     <div class="alert alert-warning">
       <%= @error_message %>

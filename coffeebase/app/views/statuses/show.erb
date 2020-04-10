@@ -1,7 +1,7 @@
 <%= @status.title %><br />
 <%= @status.content %> <br />
 
-<h2>Statues</h2>
+<h2>Comments:</h2>
 <ul>
   <% @status.comments.each do |comment| %>
     <li><a href="/comments/<%=comment.id%>"><%= comment.content %></a></li>

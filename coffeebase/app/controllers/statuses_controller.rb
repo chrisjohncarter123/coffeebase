@@ -7,7 +7,7 @@ class StatusesController < ApplicationController
   get "/statuses" do
     redirect_if_not_logged_in
     @statuses = Status.all
-    erb :'status/index'
+    erb :'statuses/index'
   end
 
   get "/statuses/new" do
@@ -23,14 +23,14 @@ class StatusesController < ApplicationController
     erb :'statuses/edit'
   end
 
-  post "/status/:id" do
+  post "/statuses/:id" do
     redirect_if_not_logged_in
     @status = Status.find(params[:id])
     unless Status.valid_params?(params)
-      redirect "/statues/#{@status.id}/edit?error=invalid status"
+      redirect "/statuses/#{@status.id}/edit?error=invalid status"
     end
-    @status.update(params.select{|k|k=="name" || k=="capacity"})
-    redirect "/status/#{@status.id}"
+    @status.update(params.select{|k|k=="title" || k=="content"})
+    redirect "/statuses/#{@status.id}"
   end
 
   get "/statuses/:id" do
@@ -43,7 +43,7 @@ class StatusesController < ApplicationController
     redirect_if_not_logged_in
 
     unless Status.valid_params?(params)
-      redirect "/statusess/new?error=invalid status"
+      redirect "/statuses/new?error=invalid status"
     end
     Status.create(params)
     redirect "/statuses"
