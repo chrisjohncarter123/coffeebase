@@ -1,0 +1,15 @@
+<h1>Add a New Comment</h1>
+
+<form action="/comments" method="POST">
+  <label> Comment Content </label>
+  <input type="text" name="content"> </br>
+
+  <label> Which Status does this belong to? </label>
+  <select name="status_id">
+    <% current_user.statuses.each do |status| %>
+      <option value=<%=status.id %>><%= status.title %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Create">
+</form>

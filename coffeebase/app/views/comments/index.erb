@@ -1,0 +1,6 @@
+<% @comments.each do |comment| %>
+  <%= comment.title %><br />
+  <a href="/comments/<%=comment.id%>/edit">Edit</a>
+  <br />
+  <br />
+<% end %>

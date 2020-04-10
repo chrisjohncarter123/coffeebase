@@ -1,0 +1,15 @@
+<h1>Edit <%= @comment.name %></h1>
+
+<form action="/comments/<%=@comment.id %>" method="POST">
+  <label> Content </label>
+  <input type="text" name="name" value="<%=@comment.content %>"> </br>
+
+  <label> Which Status does this belong to? </label>
+  <select name="status_id">
+    <% current_user.statuses.each do |status| %>
+      <option value=<%=status.id %> <%= "selected" if status.id==@comment.status.id %> ><%= status.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Update">
+</form>
