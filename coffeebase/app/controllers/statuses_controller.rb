@@ -2,7 +2,7 @@
 require_relative '../../config/environment'
 
 
-class UserPostsController < ApplicationController
+class StatusesController < ApplicationController
 
   get "/statuses" do
     redirect_if_not_logged_in
