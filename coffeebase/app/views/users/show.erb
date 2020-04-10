@@ -1,0 +1,6 @@
+<p> Here are your Statuses, <%= @user.username %>
+  <% @user.statuses.each do |status| %>
+  <ul>
+    <li><a href="/bags/<%=status.id%>"><%= status.title %></a></li>
+  </ul>
+<% end %>
