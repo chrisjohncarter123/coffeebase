@@ -1,7 +1,8 @@
 <% @statuses.each do |status| %>
-  <%= status.title %><br />
-  <%= status.content %> <br />
+  <b>Title:</b> <%= status.title %><br />
+  <b>Content:</b> <%= status.content %> <br />
   <a href="/statuses/<%=status.id%>/edit">Edit</a>
+  <a href="/statuses/<%=status.id%>/delete">Delete</a>
   <br />
   <br />
 <% end %>
