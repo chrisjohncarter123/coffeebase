@@ -23,7 +23,7 @@ class StatusesController < ApplicationController
     erb :'statuses/edit'
   end
 
-  delete "/statuses/:id/delete" do
+  delete "/statuses/:id" do
     redirect_if_not_logged_in
     @status = Status.find(params[:id])
     @status.destroy

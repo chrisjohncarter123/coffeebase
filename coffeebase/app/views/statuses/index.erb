@@ -2,7 +2,13 @@
   <b>Title:</b> <%= status.title %><br />
   <b>Content:</b> <%= status.content %> <br />
   <a href="/statuses/<%=status.id%>/edit">Edit</a>
-  <a href="/statuses/<%=status.id%>/delete">Delete</a>
+
+  <form action="/statuses/<%= status.id %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="Delete">
+    <input type="submit" value="delete">
+  </form>
+
+
   <br />
   <br />
 <% end %>
