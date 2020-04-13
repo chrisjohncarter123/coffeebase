@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   get '/signup' do
+    @error_message = params[:error]
     if !session[:user_id]
       erb :'users/new'
     else
@@ -23,9 +24,9 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if params[:username] == "" || params[:password] == ""
-      redirect to '/signup'
+      redirect to '/signup?error=invalid user signup information'
     elsif(User.exists?(username: params[:username]))
-      redirect to '/signup'
+      redirect to '/signup?error=username already taken'
     else
 
       @user = User.create(:username => params[:username], :password => params[:password])
@@ -44,12 +45,15 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
+
     user = User.find_by(:username => params[:username])
+
+
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect "/statuses"
     else
-      redirect to '/signup'
+      redirect to '/login?error=invalid user login information'
     end
   end
 
