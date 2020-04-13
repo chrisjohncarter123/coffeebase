@@ -1,14 +1,20 @@
+
+<% if true || current_user_has_statuses? %>
+
+
+
 <% @statuses.each do |status| %>
   <b>Title:</b> <%= status.title %><br />
   <b>Content:</b> <%= status.content %> <br />
-  <a href="/statuses/<%=status.id%>/edit">Edit</a>
-
-  <form action="/statuses/<%= status.id %>" method="post">
-    <input id="hidden" type="hidden" name="_method" value="Delete">
-    <input type="submit" value="delete">
-  </form>
+  <b>user id:</b> <user_id><%= status.user_id %></user_id> <br />
+  <a href="/statuses/<%=status.id%>">Show</a>
 
 
   <br />
   <br />
+  <% end %>
+<% else %>
+    <p>You currently have no statuses.</p>
+
+
 <% end %>

@@ -16,6 +16,14 @@ class StatusesController < ApplicationController
     erb :'statuses/new'
   end
 
+  get "/statuses/:id" do
+    redirect_if_not_logged_in
+    @status = Status.find(params[:id])
+    erb :'statuses/show'
+  end
+
+
+
   get "/statuses/:id/edit" do
     redirect_if_not_logged_in
     @error_message = params[:error]
@@ -30,7 +38,7 @@ class StatusesController < ApplicationController
     redirect "/statuses"
   end
 
-  post "/statuses/:id" do
+  patch "/statuses/:id" do
     redirect_if_not_logged_in
     @status = Status.find(params[:id])
     unless Status.valid_params?(params)
@@ -40,11 +48,7 @@ class StatusesController < ApplicationController
     redirect "/statuses/#{@status.id}"
   end
 
-  get "/statuses/:id" do
-    redirect_if_not_logged_in
-    @status = Status.find(params[:id])
-    erb :'statuses/show'
-  end
+
 
   post "/statuses" do
     redirect_if_not_logged_in

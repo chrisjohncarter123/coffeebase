@@ -1,6 +1,7 @@
 <h1>Edit <%= @status.title %></h1>
 
 <form action="/statuses/<%=@status.id %>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="Patch">
   <label> Status Title </label>
   <input type="text" name="title" value="<%=@status.title %>"> </br>
 
