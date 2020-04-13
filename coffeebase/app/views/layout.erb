@@ -4,15 +4,18 @@
 <head>
   <title>Coffee Master-Cheif-Chef</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
 </head>
 <body>
-<nav>
+<nav >
 
   <% if logged_in? %>
-    <a href="/statuses" class="btn btn-default" >View All Statuses</a>
-    <a href="/statuses/new" class="btn btn-default">Create New Status</a>
-    <a href="/logout" class="btn btn-default">Log Out</a>
-    <p>Welcome, <%=current_user.username %></p>
+
+    <h2>Currently signed in as: <%=current_user.username %></h2>
+
+  <a href="/statuses" class="btn btn-default" >View All Statuses</a>
+  <a href="/statuses/new" class="btn btn-default">Create New Status</a>
+  <a href="/logout" class="btn btn-default">Log Out</a>
   <% else %>
 
       <a href="/" class="btn btn-default">Home</a>

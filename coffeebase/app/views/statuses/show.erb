@@ -1,21 +1,22 @@
 <b>Title:</b> <%= @status.title %><br />
 <b>Content:</b> <%= @status.content %> <br />
-
-
-<h2>Comments:</h2>
-<ul>
-  <% @status.comments.each do |comment| %>
-    <li><a href="/comments/<%=comment.id%>"><%= comment.content %></a></li>
-  <% end%>
-</ul>
 <a href="/statuses/<%=@status.id%>/edit" class="btn btn-primary">Edit</a>
 <form action="/statuses/<%= @status.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="Delete">
   <input type="submit" class="btn btn-danger" value="delete">
 </form>
 
-<br />
-<br />
+<!--
+<h2>Comments:</h2>
+<ul>
+  <% @status.comments.each do |comment| %>
+    <li><a href="/comments/<%=comment.id%>"><%= comment.content %></a></li>
+  <% end%>
+</ul>
 
+
+<br />
+<br />
+-->
 
 
