@@ -6,7 +6,13 @@ class StatusesController < ApplicationController
 
   get "/statuses" do
     redirect_if_not_logged_in
-    @statuses = Status.all
+
+    if Status.exists?(user_id: current_user.id)
+      @statuses = Status.where(:user_id => current_user.id)
+    else
+      @statuses = []
+    end
+
     erb :'statuses/index'
   end
 
@@ -26,6 +32,9 @@ class StatusesController < ApplicationController
 
   get "/statuses/:id/edit" do
     redirect_if_not_logged_in
+
+
+
     @error_message = params[:error]
     @status = Status.find(params[:id])
     erb :'statuses/edit'
@@ -56,7 +65,11 @@ class StatusesController < ApplicationController
     unless Status.valid_params?(params)
       redirect "/statuses/new?error=invalid status"
     end
-    Status.create(params)
+
+    user_id = current_user.id
+
+    Status.create(:title => params[:title], :content => params[:content], :user_id => user_id)
+
     redirect "/statuses"
   end
 end

@@ -1,20 +1,15 @@
 
-<% if true || current_user_has_statuses? %>
-
 
 
 <% @statuses.each do |status| %>
   <b>Title:</b> <%= status.title %><br />
   <b>Content:</b> <%= status.content %> <br />
   <b>user id:</b> <user_id><%= status.user_id %></user_id> <br />
+  <b>id:</b> <user_id><%= status.id %></user_id> <br />
   <a href="/statuses/<%=status.id%>">Show</a>
 
 
   <br />
   <br />
   <% end %>
-<% else %>
-    <p>You currently have no statuses.</p>
 
-
-<% end %>
